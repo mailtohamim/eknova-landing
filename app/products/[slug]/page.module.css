@@ -1,0 +1,130 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+
+.imageSection {
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    .imageSection {
+        position: sticky;
+        top: 120px;
+    }
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image {
+    object-fit: contain;
+    padding: var(--space-xl);
+    transition: transform 0.5s ease;
+}
+
+.image:hover {
+    transform: scale(1.05);
+}
+
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.tagline {
+    display: block;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xs);
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    line-height: 1.1;
+}
+
+.priceRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+.price {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.rating {
+    color: #fbbf24;
+    font-size: 1.125rem;
+    letter-spacing: 2px;
+}
+
+.count {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    letter-spacing: normal;
+    margin-left: var(--space-xs);
+}
+
+.description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.actions {
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.accordions {
+    margin-top: var(--space-sm);
+}
+
+.list {
+    padding-left: var(--space-lg);
+    margin: 0;
+}
+
+.list li {
+    margin-bottom: var(--space-xs);
+}
+
+.allergenNote {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: var(--space-md);
+    font-style: italic;
+}
+
+.tags {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+}
+
+.tagLabel {
+    font-weight: 600;
+    color: var(--text-primary);
+}

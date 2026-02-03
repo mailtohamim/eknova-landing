@@ -1,0 +1,194 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+    opacity: 0.7;
+}
+
+.desktopNav {
+    display: none;
+    gap: var(--space-2xl);
+}
+
+@media (min-width: 768px) {
+    .desktopNav {
+        display: flex;
+    }
+}
+
+.navLink {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.navLink:hover,
+.navLink.active {
+    color: var(--text-primary);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-black);
+    transition: width var(--transition-base);
+}
+
+.navLink.active::after,
+.navLink:hover::after {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.currencyToggle {
+    background: none;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+}
+
+.currencyToggle:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--color-dark-gray);
+}
+
+
+.cartButton {
+    position: relative;
+    padding: var(--space-xs);
+    transition: transform var(--transition-fast);
+}
+
+.cartButton:hover {
+    transform: scale(1.1);
+}
+
+.cartBadge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.mobileMenuToggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    padding: var(--space-xs);
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .mobileMenuToggle {
+        display: none;
+    }
+}
+
+.mobileMenuToggle span,
+.mobileMenuToggle span::before,
+.mobileMenuToggle span::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-black);
+    transition: all var(--transition-base);
+}
+
+.mobileMenuToggle span::before,
+.mobileMenuToggle span::after {
+    content: '';
+}
+
+.mobileMenuToggle span.open {
+    background: transparent;
+}
+
+.mobileMenuToggle span.open::before {
+    transform: rotate(45deg) translateY(7px);
+}
+
+.mobileMenuToggle span.open::after {
+    transform: rotate(-45deg) translateY(-7px);
+}
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-lg) 0;
+    border-top: 1px solid var(--border-light);
+}
+
+@media (min-width: 768px) {
+    .mobileNav {
+        display: none;
+    }
+}
+
+.mobileNavLink {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    padding: var(--space-md) 0;
+    transition: color var(--transition-fast);
+}
+
+.mobileNavLink:hover,
+.mobileNavLink.active {
+    color: var(--text-primary);
+}

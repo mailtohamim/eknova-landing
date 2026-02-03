@@ -1,0 +1,104 @@
+.carouselWrapper {
+    position: relative;
+    max-width: 100%;
+}
+
+.viewport {
+    overflow: hidden;
+    margin-bottom: var(--space-xl);
+}
+
+.container {
+    display: flex;
+    gap: var(--space-lg);
+    /* No padding-left on container to align smoothly */
+}
+
+.slide {
+    flex: 0 0 85%;
+    /* Mobile: show part of next slide */
+    min-width: 0;
+}
+
+@media (min-width: 640px) {
+    .slide {
+        flex: 0 0 45%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .slide {
+        flex: 0 0 24%;
+        /* Desktop: 4 items visible somewhat */
+    }
+}
+
+/* Controls Layout */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    padding-top: var(--space-md);
+}
+
+/* Progress Bar */
+.progressBarContainer {
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--color-ash);
+    /* Light gray track */
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressBar {
+    height: 100%;
+    background-color: var(--color-accent-red);
+    /* Active Red */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.1s linear;
+    /* Smooth fill */
+    max-width: 100%;
+}
+
+/* Navigation Buttons */
+.buttons {
+    display: flex;
+    gap: var(--space-md);
+    flex-shrink: 0;
+}
+
+.navButton {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--color-dark-gray);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--color-dark-gray);
+}
+
+.navButton:hover:not(:disabled) {
+    background: var(--color-dark-gray);
+    color: white;
+}
+
+.navButton:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: var(--color-ash);
+    color: var(--color-ash);
+}
+
+.navButton svg {
+    width: 20px;
+    height: 20px;
+}

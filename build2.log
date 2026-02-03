@@ -1,0 +1,23 @@
+
+> eknova-website@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.9s
+  Running TypeScript ...
+Failed to compile.
+
+./components/cart/AddToCartButton.tsx:24:20
+Type error: 'product.images' is possibly 'undefined'.
+
+[0m [90m 22 |[39m             price[33m:[39m product[33m.[39mprice[33m,[39m
+ [90m 23 |[39m             quantity[33m,[39m
+[31m[1m>[22m[39m[90m 24 |[39m             image[33m:[39m product[33m.[39mimages[[35m0[39m][33m,[39m
+ [90m    |[39m                    [31m[1m^[22m[39m
+ [90m 25 |[39m             slug[33m:[39m product[33m.[39mslug
+ [90m 26 |[39m         })[33m;[39m
+ [90m 27 |[39m[0m
+Next.js build worker exited with code: 1 and signal: null

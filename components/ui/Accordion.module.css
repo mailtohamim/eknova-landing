@@ -1,0 +1,49 @@
+.group {
+    border-top: 1px solid var(--border-color);
+}
+
+.item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1;
+}
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.content.open {
+    max-height: 500px;
+    /* Arbitrary large height */
+}
+
+.contentInner {
+    padding-bottom: var(--space-lg);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}

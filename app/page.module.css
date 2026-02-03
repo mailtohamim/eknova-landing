@@ -1,0 +1,429 @@
+.heroSplit {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column-reverse;
+    /* Mobile: Image top, Text bottom usually... but design asked for particular layout. Let's do Text Top/Image Bottom on mobile, Side by Side on desktop */
+    background: var(--color-sand);
+}
+
+@media (min-width: 900px) {
+    .heroSplit {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.heroLeft {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2xl) var(--space-lg);
+}
+
+.heroContentLeft {
+    max-width: 600px;
+    text-align: left;
+    /* Align Left as requested in previous context, though not explicitly now, good practice for split */
+}
+
+.heroContentLeft h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+    color: var(--color-maroon);
+    font-weight: 800;
+    font-family: var(--font-sans);
+    /* Modern Sans */
+}
+
+.heroRight {
+    flex: 1;
+    height: 50vh;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 900px) {
+    .heroRight {
+        height: 85vh;
+    }
+}
+
+.heroRight img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Category Grid */
+.categoryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+    .categoryGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.categoryCardRect {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    /* Slightly rounded corners for cards */
+    transition: transform var(--transition-base);
+}
+
+.categoryCardRect:hover {
+    transform: translateY(-5px);
+}
+
+.categoryImageWrapperRect {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%;
+    /* Portrait aspect ratio (4:5) for a magazine look */
+    background: #f0f0f0;
+}
+
+.categoryImageWrapperRect img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.categoryCardRect:hover .categoryImageWrapperRect img {
+    transform: scale(1.05);
+    /* Zoom effect on hover */
+}
+
+.categoryOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: var(--space-lg);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 50%;
+}
+
+.categoryOverlay h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Benefit Grid */
+.benefitGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xl);
+}
+
+.benefitItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+    width: 140px;
+    /* Slightly wider for labels */
+    transition: transform var(--transition-fast);
+}
+
+.benefitItem:hover {
+    transform: scale(1.05);
+}
+
+.benefitIcon {
+    font-size: 2rem;
+    background: white;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    /* Slightly clearer shadow */
+    color: var(--color-black);
+    /* Ensure icons are dark/black */
+    border: 1px solid var(--border-light);
+}
+
+/* Values Grid (Legacy) */
+.valuesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+    .valuesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .valuesGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.valueCard {
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--color-white);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-base);
+}
+
+.valueCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.valueCard h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+}
+
+.valueCard p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.sectionHeader h2 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-maroon);
+    /* Maroon accent */
+    font-family: var(--font-sans);
+    /* Modern Sans */
+    font-weight: 700;
+}
+
+.sectionHeader p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+    .productGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .productGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Wellness Hub */
+.hubGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+    .hubGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.hubCard {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-base);
+}
+
+.hubCard:hover {
+    transform: translateY(-5px);
+}
+
+.hubCard img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.hubContent {
+    padding: var(--space-xl);
+    text-align: left;
+}
+
+.hubTag {
+    background: var(--color-maroon);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    display: inline-block;
+}
+
+.hubContent h3 {
+    margin-bottom: var(--space-sm);
+}
+
+/* Instagram Grid */
+.instaGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+    .instaGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.instaGrid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity var(--transition-fast);
+}
+
+.instaGrid img:hover {
+    opacity: 0.8;
+}
+
+/* Why Eknova Split */
+.whyEknovaSplit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: var(--color-deep-brown);
+    gap: 0;
+    background: var(--color-deep-brown);
+    border-radius: 32px;
+    /* More rounded */
+    overflow: hidden;
+}
+
+@media (min-width: 900px) {
+    .whyEknovaSplit {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.whyImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 400px;
+}
+
+.whyContentDark {
+    padding: var(--space-3xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.whyListDark {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    color: white;
+}
+/* Why Eknova Icon Grid */
+.whyTitle {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 900 !important;
+    text-transform: uppercase;
+    font-size: 2.5rem !important;
+    color: var(--color-black) !important;
+    margin-bottom: var(--space-md);
+}
+
+.whySubtitle {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem !important;
+    color: var(--text-secondary);
+}
+
+.iconGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .iconGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .iconGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.iconItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.iconWrapper {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-xs);
+    color: var(--color-black);
+}
+
+.iconItem h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin-bottom: 4px;
+    color: var(--color-black);
+}
+
+.iconItem p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    max-width: 200px;
+}
