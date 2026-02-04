@@ -27,7 +27,7 @@
 }
 
 .mainHeading {
-    font-family: var(--font-sans);
+    font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 0.9;
@@ -98,7 +98,7 @@
 }
 
 .cardTitle {
-    font-family: var(--font-sans);
+    font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-size: 2.5rem;
     line-height: 0.9;
