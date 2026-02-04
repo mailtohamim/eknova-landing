@@ -163,9 +163,7 @@ a {
   transition: opacity var(--transition-fast);
 }
 
-a:hover {
-  opacity: 0.8;
-}
+/* a:hover opacity removed to prevent unwanted fade on cards/buttons */
 
 img {
   max-width: 100%;

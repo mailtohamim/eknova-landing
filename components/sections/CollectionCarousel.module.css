@@ -104,6 +104,8 @@
     line-height: 0.9;
     text-transform: uppercase;
     margin: 0;
+    color: inherit;
+    /* Inherit from parent card color */
 }
 
 .cardFooter {
