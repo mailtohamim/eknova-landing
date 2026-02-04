@@ -466,8 +466,8 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    /* Left align */
+    justify-content: center;
+    /* Center align */
 }
 
 .heroImageWrapper {
@@ -505,12 +505,12 @@
 .heroContentOverlay {
     position: relative;
     z-index: 3;
-    text-align: left;
-    /* Left align text */
+    text-align: center;
+    /* Center align text */
     color: white;
-    padding: var(--space-3xl);
-    /* More padding for left alignment */
-    max-width: 900px;
+    padding: var(--space-xl);
+    /* Balanced padding for centered content */
+    max-width: 1200px;
     width: 100%;
 }
 
