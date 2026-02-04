@@ -101,13 +101,15 @@
 
 .backTitle {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 900;
+    /* Bold */
     color: white;
     /* White text */
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
     display: inline-block;
     align-self: center;
     padding-bottom: 2px;
