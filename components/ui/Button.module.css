@@ -49,7 +49,6 @@
 
 .ghost:hover:not(:disabled) {
     border-color: var(--color-black);
-    background: var(--color-pearl);
 }
 
 /* Sizes */

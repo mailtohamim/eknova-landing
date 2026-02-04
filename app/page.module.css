@@ -187,23 +187,51 @@
     text-align: center;
     padding: var(--space-xl);
     background: var(--color-white);
-    border: 1px solid var(--border-light);
+    /* Removed border for cleaner look */
+    border: 1px solid transparent;
+    border-radius: 16px;
+    /* Soft rounding */
     transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
 }
 
 .valueCard:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    background: var(--color-white);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    /* Modern soft shadow */
+    border-color: var(--color-ash);
+}
+
+.valueIcon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-beige);
+    /* Soft background for icon */
+    border-radius: 50%;
+    color: var(--color-black);
+    margin-bottom: var(--space-xs);
 }
 
 .valueCard h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-sm);
+    font-size: 1.15rem;
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-sans);
+    /* Sans serif as requested */
+    font-weight: 700;
+    color: var(--color-black);
 }
 
 .valueCard p {
-    color: var(--text-muted);
-    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .sectionHeader {
@@ -360,20 +388,21 @@
     gap: var(--space-sm);
     color: white;
 }
+
 /* Why Eknova Icon Grid */
 .whyTitle {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 900 !important;
+    font-family: var(--font-sans);
+    font-weight: 900;
     text-transform: uppercase;
-    font-size: 2.5rem !important;
-    color: var(--color-black) !important;
+    font-size: 2.5rem;
+    color: var(--color-black);
     margin-bottom: var(--space-md);
 }
 
 .whySubtitle {
     max-width: 800px;
     margin: 0 auto;
-    font-size: 1.1rem !important;
+    font-size: 1.1rem;
     color: var(--text-secondary);
 }
 
@@ -415,7 +444,7 @@
 }
 
 .iconItem h3 {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-sans);
     font-weight: 700;
     font-size: 1.125rem;
     margin-bottom: 4px;
@@ -426,4 +455,84 @@
     font-size: 0.9rem;
     color: var(--text-muted);
     max-width: 200px;
+}
+
+/* Full Width Hero */
+.heroFull {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    /* Takes up most of the viewport */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Left align */
+}
+
+.heroImageWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.heroImageWrapper img,
+.heroImageWrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay to ensure text readability */
+/* Removed overly dark overlay since we are using difference mode now which needs contrast,
+   but keeping a very subtle one might still be okay.
+   Actually, users typically want 'clean' look with difference mode.
+   Let's keep the user's request for difference mode as priority. */
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    /* Changed from dark overlay to transparent to let difference mode work purely on image */
+    z-index: 2;
+}
+
+.heroContentOverlay {
+    position: relative;
+    z-index: 3;
+    text-align: left;
+    /* Left align text */
+    color: white;
+    padding: var(--space-3xl);
+    /* More padding for left alignment */
+    max-width: 900px;
+    width: 100%;
+}
+
+.heroContentOverlay h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    /* Made slightly bigger for impact */
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+    font-weight: 800;
+    font-family: var(--font-sans);
+    color: white;
+    /* Ensure white */
+    text-shadow: none;
+    /* Add shadow back for readability on video */
+    mix-blend-mode: difference;
+}
+
+.serifText {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    /* Lighter weight for serif contrast */
+    font-style: italic;
+    margin: 0 0.2em;
+    /* little spacing */
 }

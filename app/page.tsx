@@ -7,26 +7,30 @@ import { products } from '@/lib/data/products';
 import styles from './page.module.css';
 
 export default function HomePage() {
-  const featuredProducts = products.slice(0, 4);
+  const featuredProducts = products.slice(0, 12);
 
   return (
     <>
       {/* Hero Section - Split Layout */}
-      <section className={styles.heroSplit}>
-        <div className={styles.heroLeft}>
-          <div className={styles.heroContentLeft}>
-            <h1 className="">Science Meets Nature</h1>
-
-            {/* Buttons removed as per request for cleaner look */}
-            <div className={styles.heroActions}>
-            </div>
-          </div>
-        </div>
-        <div className={styles.heroRight}>
-          <img
-            src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1200&auto=format&fit=crop"
-            alt="Science and Nature"
+      {/* Hero Section - Full Width */}
+      <section className={styles.heroFull}>
+        <div className={styles.heroImageWrapper}>
+          <video
+            src="/images/Couple Running.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
+          <div className={styles.heroOverlay}></div>
+        </div>
+
+        <div className={styles.heroContentOverlay}>
+          <h1>
+            Health
+            <span className={styles.serifText}>Made</span>
+            Simple.
+          </h1>
         </div>
       </section>
 
@@ -35,18 +39,44 @@ export default function HomePage() {
         <div className="container">
           <div className={styles.valuesGrid}>
             <div className={styles.valueCard}>
+              <div className={styles.valueIcon}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2.69l5.74 5.74-2.12 2.12-3.62-3.62-3.62 3.62-2.12-2.12 5.74-5.74zM12 22c5.52 0 10-4.48 10-10s-4.48-10-10-10-10 4.48-10 10 4.48 10 10 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
               <h3>Organic Sourcing</h3>
               <p>Pure plant extracts from sustainable farms</p>
             </div>
             <div className={styles.valueCard}>
+              <div className={styles.valueIcon}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                  <line x1="9" y1="9" x2="9.01" y2="9" />
+                  <line x1="15" y1="9" x2="15.01" y2="9" />
+                </svg>
+              </div>
               <h3>Holistic Wellness</h3>
               <p>Mind-body balance through nature</p>
             </div>
             <div className={styles.valueCard}>
+              <div className={styles.valueIcon}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
               <h3>Standardized</h3>
               <p>Consistent potency in every capsule</p>
             </div>
             <div className={styles.valueCard}>
+              <div className={styles.valueIcon}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
               <h3>Sustainable</h3>
               <p>Earth-friendly practices throughout</p>
             </div>

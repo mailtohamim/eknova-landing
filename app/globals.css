@@ -1,5 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-@import "tailwindcss";
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/Coolvetica%20Rg.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/Coolvetica%20Rg%20It.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/Coolvetica%20Rg%20Cond.otf') format('opentype');
+  font-weight: 400;
+  font-stretch: condensed;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/Coolvetica%20Hv%20Comp.otf') format('opentype');
+  font-weight: 900;
+  font-stretch: ultra-condensed;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/Coolvetica%20Rg%20Cram.otf') format('opentype');
+  font-weight: 400;
+  font-stretch: extra-condensed;
+}
 
 :root {
   /* Swisse-inspired Palette */
@@ -7,8 +39,8 @@
   --color-black: #000000;
   --color-charcoal: #1A1A1A;
   /* Softer charcoal */
-  --color-maroon: #982B2B;
-  /* Deep Warm Maroon */
+  --color-maroon: #800000;
+  /* Deep Warm Maroon - BRAND COLOR */
   --color-deep-brown: #4A3B32;
   /* Earthy Dark */
 
@@ -44,8 +76,8 @@
   --border-light: var(--color-smoke);
 
   /* Typography */
-  --font-serif: var(--font-serif), "Georgia", serif;
-  --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Coolvetica", sans-serif;
+  --font-sans: "Coolvetica", sans-serif;
 
   /* Spacing */
   --space-xs: 0.5rem;
@@ -90,33 +122,39 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1.2;
+  font-family: var(--font-sans);
+  /* Updated to sans per modern request */
+  font-weight: 400;
+  /* Coolvetica is naturally thick */
+  line-height: 1.1;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-size: clamp(3rem, 6vw, 4.5rem);
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(2rem, 4vw, 2.5rem);
 }
 
 h4 {
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
 button {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   cursor: pointer;
   border: none;
   outline: none;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 a {

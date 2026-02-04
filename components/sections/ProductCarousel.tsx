@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import ProductCard from './ProductCard';
+import CarouselProductCard from './CarouselProductCard';
 import { Product } from '@/types/product';
 import styles from './ProductCarousel.module.css';
 
@@ -16,6 +16,7 @@ export default function ProductCarousel({ products }: ProductCarouselProps) {
         align: 'start',
         slidesToScroll: 1
     });
+    // ... keep existing state ...
     const [scrollProgress, setScrollProgress] = useState(0);
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(false);
@@ -52,11 +53,13 @@ export default function ProductCarousel({ products }: ProductCarouselProps) {
         <div className={styles.carouselWrapper}>
             <div className={styles.viewport} ref={emblaRef}>
                 <div className={styles.container}>
-                    {products.map((product) => (
-                        <div className={styles.slide} key={product.id}>
-                            <ProductCard product={product} />
-                        </div>
-                    ))}
+                    {products.map((product, index) => {
+                        return (
+                            <div className={styles.slide} key={product.id}>
+                                <CarouselProductCard product={product} />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
 

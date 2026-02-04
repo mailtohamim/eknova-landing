@@ -1,0 +1,214 @@
+/* Main Wrapper */
+.linkWrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    text-decoration: none;
+    height: 100%;
+    color: inherit;
+    background: var(--color-white);
+    border: 1px solid var(--border-light);
+    /* Reference has border */
+    padding: var(--space-md);
+    /* Reference has inner padding */
+    transition: all 0.2s ease;
+}
+
+.linkWrapper:hover {
+    border-color: var(--color-ash);
+}
+
+/* Flip Container */
+.flipWrapper {
+    perspective: 1000px;
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: var(--space-md);
+    position: relative;
+    z-index: 10;
+}
+
+.flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+    /* Removed border-radius/shadow here as the outer card has the frame now */
+}
+
+/* Hover over image area triggers flip */
+.flipWrapper:hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+/* Front Face */
+.front {
+    z-index: 2;
+    background: transparent;
+    /* Transparent so it sits on white card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(0deg);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-secondary);
+}
+
+.image {
+    width: auto;
+    height: 80%;
+    max-width: 90%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+/* Back Face */
+.back {
+    transform: rotateY(180deg);
+    background: var(--color-maroon);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.backTitle {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-xs);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+}
+
+.benefitList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-sm) 0;
+}
+
+.benefitList li {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.ingredientsPreview {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: var(--space-xs);
+}
+
+/* Info Section (Static) */
+.info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* Fill remaining space */
+}
+
+.brand {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    /* Assuming lighter grey */
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+}
+
+.name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 4px;
+    line-height: 1.2;
+    font-family: var(--font-sans);
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.4;
+    min-height: 2.8em;
+    /* Force 2 lines height approx */
+}
+
+.footer {
+    margin-top: auto;
+    /* Push to bottom */
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    font-size: 1.25rem;
+    color: var(--color-black);
+    font-weight: 700;
+    font-family: var(--font-sans);
+}
+
+.viewBtn {
+    background: var(--color-maroon);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 999px;
+    /* Pill */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+}
+
+.linkWrapper:hover .viewBtn {
+    background: var(--color-deep-brown);
+}
+
+/* Reviews */
+.reviewsWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: var(--space-xs);
+}
+
+.stars {
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+}
+
+.reviewCount {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}

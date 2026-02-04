@@ -3,7 +3,7 @@
 import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
+import { Shield, Moon, Zap, Leaf, LucideIcon } from 'lucide-react';
 import styles from './CollectionCarousel.module.css';
 
 interface Collection {
@@ -12,7 +12,7 @@ interface Collection {
     bg: string;
     color: string;
     link: string;
-    image?: string;
+    Icon: LucideIcon;
 }
 
 const collections: Collection[] = [
@@ -22,7 +22,7 @@ const collections: Collection[] = [
         bg: '#FFD200', // Swisse Yellow
         color: '#4A3B32', // Deep Brown Text
         link: '/products?category=Immunomodulator',
-        image: '/images/products/Eknova product sample mockup.png'
+        Icon: Shield
     },
     {
         title: 'GOOD SLEEP',
@@ -30,7 +30,7 @@ const collections: Collection[] = [
         bg: '#B491C8', // Lavender/Purple
         color: '#FFFFFF',
         link: '/products?category=Sleep',
-        image: '/images/products/Eknova product sample mockup.png'
+        Icon: Moon
     },
     {
         title: 'DAILY ENERGY',
@@ -38,7 +38,7 @@ const collections: Collection[] = [
         bg: '#008489', // Teal
         color: '#FFFFFF',
         link: '/products?category=Energy',
-        image: '/images/products/Eknova product sample mockup.png'
+        Icon: Zap
     },
     {
         title: 'GUT HEALTH',
@@ -46,7 +46,7 @@ const collections: Collection[] = [
         bg: '#E87722', // Orange
         color: '#FFFFFF',
         link: '/products?category=Gut',
-        image: '/images/products/Eknova product sample mockup.png'
+        Icon: Leaf
     }
 ];
 
@@ -93,12 +93,11 @@ export default function CollectionCarousel() {
                                             <span className={styles.rangeName}>{col.title.split(' ')[1] || col.title}</span>
                                             <span className={styles.discoverLink}>Discover the Range</span>
                                         </div>
-                                        {/* Product Image */}
-                                        {col.image && (
-                                            <div className={styles.productImageWrapper}>
-                                                <img src={col.image} alt={col.title} className={styles.productImage} />
-                                            </div>
-                                        )}
+
+                                        {/* Icon Overlay */}
+                                        <div className={styles.iconOverlay}>
+                                            <col.Icon strokeWidth={1} />
+                                        </div>
                                     </Link>
                                 </div>
                             ))}

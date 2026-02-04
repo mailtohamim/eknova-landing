@@ -1,72 +1,75 @@
-.gallery {
+.galleryWrapper {
     display: flex;
-    flex-direction: column;
     gap: var(--space-md);
+    flex-direction: column-reverse;
+    /* Mobile: thumbnails below */
 }
 
-.mainImageWrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.mainImage {
-    object-fit: contain;
-    padding: var(--space-xl);
-    transition: opacity 0.3s ease;
+@media (min-width: 768px) {
+    .galleryWrapper {
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }
 
 .thumbnails {
     display: flex;
     gap: var(--space-sm);
+    flex-direction: row;
     overflow-x: auto;
-    padding-bottom: var(--space-xs);
-    /* Scrollbar space */
 }
 
-/* Hide scrollbar for cleaner look */
-.thumbnails::-webkit-scrollbar {
-    display: none;
+@media (min-width: 768px) {
+    .thumbnails {
+        flex-direction: column;
+        width: 80px;
+        flex-shrink: 0;
+    }
 }
 
-.thumbnails {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.thumbnailButton {
-    flex-shrink: 0;
+.thumbItem {
     width: 80px;
     height: 80px;
-    padding: 0;
-    border: 2px solid transparent;
-    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 4px;
+    /* White frame */
     cursor: pointer;
-    background: none;
-    transition: all var(--transition-fast);
+    overflow: hidden;
+    opacity: 0.7;
+    transition: all 0.2s;
 }
 
-.thumbnailButton.active {
-    border-color: var(--text-primary);
+.thumbItem:hover,
+.active {
+    opacity: 1;
+    border-color: var(--color-maroon);
 }
 
-.thumbnailButton:hover:not(.active) {
-    border-color: var(--border-color);
-}
-
-.thumbnailWrapper {
-    position: relative;
+.thumbItem img {
     width: 100%;
     height: 100%;
-    background: var(--bg-secondary);
+    object-fit: cover;
     border-radius: 4px;
-    overflow: hidden;
 }
 
-.thumbnailImage {
+.mainImage {
+    flex-grow: 1;
+    background: var(--color-bg-secondary);
+    /* Beige background */
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    padding: var(--space-xs);
+    mix-blend-mode: multiply;
+    /* If on beige bg */
 }

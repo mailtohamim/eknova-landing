@@ -128,30 +128,29 @@
 }
 
 /* Image Placement */
-.productImageWrapper {
+/* Image Placement replaced with Icon Overlay */
+.iconOverlay {
     position: absolute;
-    bottom: -20px;
-    /* Slight overlap with bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: auto;
-    z-index: 1;
-    /* Behind text (or slightly in front if we want clarity) - Text is z-index 2 so it will be on top */
+    bottom: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    color: currentColor;
+    opacity: 0.2;
+    transform: rotate(-15deg);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
-    opacity: 0.9;
-    transition: transform 0.5s ease;
+    z-index: 0;
 }
 
-.card:hover .productImageWrapper {
-    transform: translateX(-50%) scale(1.05) translateY(-10px);
-}
-
-.productImage {
+.iconOverlay svg {
     width: 100%;
-    height: auto;
-    display: block;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+    height: 100%;
+}
+
+.card:hover .iconOverlay {
+    transform: rotate(0deg) scale(1.1) translate(-10px, -10px);
+    opacity: 0.3;
 }
 
 

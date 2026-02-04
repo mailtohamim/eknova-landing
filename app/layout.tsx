@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 import { inter, lora } from './fonts';
+import PromoRibbon from '@/components/layout/PromoRibbon';
 
 export default function RootLayout({
   children,
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body className="antialiased">
+        <PromoRibbon />
         <Header />
         <main>{children}</main>
         <Footer />

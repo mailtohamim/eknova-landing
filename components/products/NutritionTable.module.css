@@ -1,0 +1,40 @@
+.tableWrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    border: 2px solid var(--color-black);
+    padding: var(--space-xs);
+    background: white;
+    font-family: var(--font-sans);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: left;
+    border-bottom: 4px solid var(--color-black);
+    /* Thick line */
+    padding: var(--space-xs) 0;
+}
+
+.table td {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.9rem;
+}
+
+.thickRow td {
+    border-bottom: 2px solid var(--color-black);
+    padding-top: var(--space-sm);
+}
+
+.disclaimer {
+    font-size: 0.75rem;
+    margin-top: var(--space-sm);
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
