@@ -109,8 +109,6 @@
 
 body {
   font-family: var(--font-sans);
-  font-weight: 400;
-  /* Coolvetica Regular */
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -125,9 +123,9 @@ h4,
 h5,
 h6 {
   font-family: var(--font-sans);
-  font-weight: 900;
-  /* Coolvetica Heavy Compressed */
-  font-stretch: ultra-condensed;
+  /* Updated to sans per modern request */
+  font-weight: 400;
+  /* Coolvetica is naturally thick */
   line-height: 1.1;
   color: var(--text-primary);
   letter-spacing: -0.02em;

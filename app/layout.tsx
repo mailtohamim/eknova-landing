@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
+import { inter, lora } from './fonts';
 import PromoRibbon from '@/components/layout/PromoRibbon';
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body className="antialiased">
         <PromoRibbon />
         <Header />
