@@ -1,69 +1,72 @@
-'use client';
-
 import React from 'react';
 import styles from './FilterBar.module.css';
+import FilterDropdown from './FilterDropdown';
 
 interface FilterBarProps {
+    categories: string[];
+    selectedCategory: string | null;
     formats: string[];
     selectedFormat: string | null;
     sortOption: string;
     resultCount: number;
+    onCategorySelect: (category: string | null) => void;
     onFormatSelect: (format: string | null) => void;
     onSortChange: (sort: string) => void;
 }
 
+const SORT_OPTIONS = [
+    { label: 'Featured', value: 'featured' },
+    { label: 'Best Sellers', value: 'best-sellers' },
+    { label: 'Newest', value: 'newest' },
+    { label: 'Price: Low to High', value: 'price-asc' },
+    { label: 'Price: High to Low', value: 'price-desc' },
+];
+
 export default function FilterBar({
+    categories,
+    selectedCategory,
     formats,
     selectedFormat,
     sortOption,
     resultCount,
+    onCategorySelect,
     onFormatSelect,
     onSortChange
 }: FilterBarProps) {
+    const categoryOptions = categories.map(c => ({ label: c, value: c }));
+    const formatOptions = formats.map(f => ({ label: f, value: f }));
+
     return (
         <div className={styles.filterContainer}>
-            <div className={styles.topRow}>
-                <div className={styles.resultCount}>
-                    {resultCount} Result{resultCount !== 1 ? 's' : ''}
-                </div>
+            <div className={styles.controlsRow}>
+                <FilterDropdown
+                    label="Health Goal"
+                    options={categoryOptions}
+                    value={selectedCategory}
+                    onChange={onCategorySelect}
+                    placeholder="All Needs"
+                />
 
-                <div className={styles.sortGroup}>
-                    <span className={styles.label}>Sort by:</span>
-                    <div className={styles.selectWrapper}>
-                        <select
-                            className={styles.select}
-                            value={sortOption}
-                            onChange={(e) => onSortChange(e.target.value)}
-                        >
-                            <option value="featured">Featured</option>
-                            <option value="best-sellers">Best Sellers</option>
-                            <option value="newest">Newest</option>
-                            <option value="price-asc">Price: Low to High</option>
-                            <option value="price-desc">Price: High to Low</option>
-                        </select>
-                        <svg className={styles.arrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M6 9l6 6 6-6" />
-                        </svg>
-                    </div>
-                </div>
+                <FilterDropdown
+                    label="Format"
+                    options={formatOptions}
+                    value={selectedFormat}
+                    onChange={onFormatSelect}
+                    placeholder="All Types"
+                />
+
+                <FilterDropdown
+                    label="Sort By"
+                    options={SORT_OPTIONS}
+                    value={sortOption}
+                    onChange={(val) => onSortChange(val || 'featured')}
+                />
             </div>
 
-            <div className={styles.chipsContainer}>
-                <button
-                    className={`${styles.chip} ${!selectedFormat ? styles.chipActive : ''}`}
-                    onClick={() => onFormatSelect(null)}
-                >
-                    All Types
-                </button>
-                {formats.map(format => (
-                    <button
-                        key={format}
-                        className={`${styles.chip} ${selectedFormat === format ? styles.chipActive : ''}`}
-                        onClick={() => onFormatSelect(format)}
-                    >
-                        {format}
-                    </button>
-                ))}
+            <div className={styles.resultsRow}>
+                <span className={styles.countText}>
+                    Showing {resultCount} product{resultCount !== 1 ? 's' : ''}
+                </span>
             </div>
         </div>
     );

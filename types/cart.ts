@@ -5,6 +5,7 @@ export interface CartItem {
     quantity: number;
     image: string;
     slug: string;
+    selectedSize?: number;
 }
 
 export interface CartStore {

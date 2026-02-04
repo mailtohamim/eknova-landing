@@ -5,6 +5,7 @@ import styles from './ProductInfo.module.css';
 import { Product } from '@/types/product';
 import Button from '@/components/ui/Button';
 import { formatCurrency } from '@/lib/utils/currency';
+import { useCartStore } from '@/lib/store/cartStore';
 
 interface ProductInfoProps {
     product: Product;
@@ -78,7 +79,22 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                     <span>{quantity}</span>
                     <button onClick={() => handleQuantityChange(1)}>+</button>
                 </div>
-                <Button variant="primary" size="large" className={styles.addToCartBtn}>
+                <Button
+                    variant="primary"
+                    size="large"
+                    className={styles.addToCartBtn}
+                    onClick={() => {
+                        useCartStore.getState().addItem({
+                            productId: product.id,
+                            name: product.name,
+                            price: finalPrice / quantity, // Price per single unit with discount
+                            quantity: quantity,
+                            image: product.image,
+                            slug: product.slug,
+                            selectedSize: selectedSize
+                        });
+                    }}
+                >
                     Add to Cart - {formatCurrency(finalPrice)}
                 </Button>
             </div>

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/types/product';
 import styles from './CarouselProductCard.module.css';
+import { useCartStore } from '@/lib/store/cartStore';
 
 interface CarouselProductCardProps {
     product: Product;
@@ -57,7 +58,23 @@ export default function CarouselProductCard({ product }: CarouselProductCardProp
 
                 <div className={styles.footer}>
                     <div className={styles.price}>{formattedPrice}</div>
-                    <div className={styles.viewBtn}>VIEW</div>
+                    <div
+                        className={styles.viewBtn}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            useCartStore.getState().addItem({
+                                productId: product.id,
+                                name: product.name,
+                                price: product.price,
+                                quantity: 1,
+                                image: product.image,
+                                slug: product.slug
+                            });
+                        }}
+                    >
+                        ADD
+                    </div>
                 </div>
             </div>
         </Link>

@@ -5,6 +5,7 @@ import Price from '@/components/ui/Price';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import styles from './ProductCard.module.css';
+import { useCartStore } from '@/lib/store/cartStore';
 
 interface ProductCardProps {
     product: Product;
@@ -57,8 +58,23 @@ export default function ProductCard({ product }: ProductCardProps) {
                                 <Price amount={product.price} />
                             </span>
                         </div>
-                        <Button variant="primary" size="small">
-                            View
+                        <Button
+                            variant="primary"
+                            size="small"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                useCartStore.getState().addItem({
+                                    productId: product.id,
+                                    name: product.name,
+                                    price: product.price,
+                                    quantity: 1,
+                                    image: product.image,
+                                    slug: product.slug
+                                });
+                            }}
+                        >
+                            Add
                         </Button>
                     </div>
                 </div>

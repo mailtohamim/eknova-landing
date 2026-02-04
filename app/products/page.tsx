@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { products, FORMATS } from '@/lib/data/products';
+import { products, FORMATS, CATEGORIES } from '@/lib/data/products';
 import { CATEGORY_IMAGES, CATEGORY_DESCRIPTIONS } from '@/lib/data/category-images';
 import CategoryHero from '@/components/products/CategoryHero';
 import ProductCard from '@/components/sections/ProductCard';
@@ -62,6 +62,16 @@ function ProductList() {
     }
 
     // Handlers
+    const handleCategorySelect = (newCategory: string | null) => {
+        const params = new URLSearchParams(searchParams.toString());
+        if (newCategory) {
+            params.set('category', newCategory);
+        } else {
+            params.delete('category');
+        }
+        router.push(`/products?${params.toString()}`);
+    };
+
     const handleFormatSelect = (newFormat: string | null) => {
         const params = new URLSearchParams(searchParams.toString());
         if (newFormat) {
@@ -97,10 +107,13 @@ function ProductList() {
                 )}
 
                 <FilterBar
+                    categories={CATEGORIES}
+                    selectedCategory={category}
                     formats={FORMATS}
                     selectedFormat={format}
                     sortOption={sort}
                     resultCount={filteredProducts.length}
+                    onCategorySelect={handleCategorySelect}
                     onFormatSelect={handleFormatSelect}
                     onSortChange={handleSortChange}
                 />
