@@ -14,43 +14,51 @@ export async function GET() {
         });
 
         if (products.length === 0 || !hasNewCategories) {
-            console.log('Seeding/Refreshing products in DB...');
+            console.log('Seeding/Refreshing products or Fallback to Static...');
             const { products: staticProducts } = await import('@/lib/data/products-new');
-            for (const p of staticProducts) {
-                await prisma.product.upsert({
-                    where: { slug: p.slug },
-                    update: {
-                        needs: p.needs || [],
-                        portfolio: p.portfolio,
-                        // Update other fields as well to ensure parity
-                        name: p.name,
-                        tagline: p.tagline,
-                        price: p.price,
-                    },
-                    create: {
-                        slug: p.slug,
-                        name: p.name,
-                        tagline: p.tagline,
-                        description: p.description,
-                        price: p.price,
-                        rating: p.rating,
-                        reviews: p.reviews,
-                        image: p.image,
-                        images: p.images || [],
-                        benefits: p.benefits || [],
-                        ingredients: p.ingredients || [],
-                        usage: p.usage,
-                        format: p.format,
-                        needs: p.needs || [],
-                        portfolio: p.portfolio,
-                        isNew: p.isNew || false,
-                        isBestSeller: p.isBestSeller || false,
-                    },
+
+            try {
+                // Attempt to seed (will fail on Vercel Read-Only)
+                for (const p of staticProducts) {
+                    await prisma.product.upsert({
+                        where: { slug: p.slug },
+                        update: {
+                            needs: p.needs || [],
+                            portfolio: p.portfolio,
+                            name: p.name,
+                            tagline: p.tagline,
+                            price: p.price,
+                            format: p.format,
+                        },
+                        create: {
+                            slug: p.slug,
+                            name: p.name,
+                            tagline: p.tagline,
+                            description: p.description,
+                            price: p.price,
+                            rating: p.rating,
+                            reviews: p.reviews,
+                            image: p.image,
+                            images: p.images || [],
+                            benefits: p.benefits || [],
+                            ingredients: p.ingredients || [],
+                            usage: p.usage,
+                            format: p.format,
+                            needs: p.needs || [],
+                            portfolio: p.portfolio,
+                            isNew: p.isNew || false,
+                            isBestSeller: p.isBestSeller || false,
+                        },
+                    });
+                }
+                // Refetch if seed succeeded
+                products = await prisma.product.findMany({
+                    orderBy: { createdAt: 'desc' },
                 });
+            } catch (seedError) {
+                console.warn('Seeding failed (expected on Vercel SQLite), returning static data:', seedError);
+                return NextResponse.json(staticProducts);
             }
-            products = await prisma.product.findMany({
-                orderBy: { createdAt: 'desc' },
-            });
         }
 
         // Robust parsing for SQLite (which sometimes returns strings for Json fields)
