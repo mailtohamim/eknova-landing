@@ -16,8 +16,8 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: var(--space-xl);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
 }
 
 @media (min-width: 640px) {

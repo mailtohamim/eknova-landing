@@ -10,8 +10,13 @@
     border: 1px solid var(--border-light);
     /* Reference has border */
     padding: var(--space-md);
-    /* Reference has inner padding */
     transition: all 0.2s ease;
+}
+
+@media (max-width: 639px) {
+    .linkWrapper {
+        padding: var(--space-sm);
+    }
 }
 
 .linkWrapper:hover {
@@ -155,6 +160,12 @@
     font-family: var(--font-sans);
 }
 
+@media (max-width: 639px) {
+    .name {
+        font-size: 0.95rem;
+    }
+}
+
 .tagline {
     font-size: 0.85rem;
     color: var(--text-secondary);
@@ -186,12 +197,18 @@
     color: white;
     font-size: 0.75rem;
     font-weight: 700;
-    padding: 8px 20px;
+    padding: 8px 16px;
     border-radius: 999px;
-    /* Pill */
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: background 0.2s;
+}
+
+@media (max-width: 639px) {
+    .viewBtn {
+        padding: 6px 12px;
+        font-size: 0.65rem;
+    }
 }
 
 .linkWrapper:hover .viewBtn {

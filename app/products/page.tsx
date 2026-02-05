@@ -35,7 +35,7 @@ function ProductList() {
                         benefits: Array.isArray(p.benefits) ? p.benefits : [],
                         ingredients: Array.isArray(p.ingredients) ? p.ingredients : [],
                         needs: Array.isArray(p.needs) ? p.needs : [],
-                        images: Array.isArray(p.images) ? p.images : [p.image],
+                        images: (Array.isArray(p.images) && p.images.length > 0) ? p.images : [p.image],
                     }));
                     setAllProducts(sanitized);
                 } else {

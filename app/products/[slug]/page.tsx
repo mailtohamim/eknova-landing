@@ -24,7 +24,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         format: productData.format as ProductFormat,
         benefits: (productData.benefits as string[]) || [],
         ingredients: (productData.ingredients as string[]) || [],
-        images: (productData.images as string[]) || [productData.image],
+        images: (Array.isArray(productData.images) && productData.images.length > 0)
+            ? (productData.images as string[])
+            : [productData.image],
         needs: (productData.needs as string[]) || [],
         portfolio: productData.portfolio as any,
     };

@@ -19,7 +19,9 @@ export default async function HomePage() {
     benefits: (p.benefits as string[]) || [],
     ingredients: (p.ingredients as string[]) || [],
     needs: (p.needs as string[]) || [],
-    images: (p.images as string[]) || [p.image],
+    images: (Array.isArray(p.images) && p.images.length > 0)
+      ? (p.images as string[])
+      : [p.image],
     portfolio: p.portfolio as any,
   }));
 

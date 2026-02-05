@@ -10,11 +10,13 @@ interface ProductGalleryProps {
 }
 
 export default function ProductGallery({ images, productName }: ProductGalleryProps) {
-    const [mainImage, setMainImage] = useState(images[0]);
+    const initialImage = images && images.length > 0 ? images[0] : '/images/products/placeholder.png';
+    const [mainImage, setMainImage] = useState(initialImage);
+
     // Create mock images if only one provided, just for UI demo
-    const galleryImages = images.length > 1
-        ? images
-        : [images[0], images[0], images[0], images[0]]; // Mock gallery
+    const galleryImages = images && images.length > 0
+        ? (images.length > 1 ? images : [images[0], images[0], images[0], images[0]])
+        : ['/images/products/placeholder.png']; // Safety fallback
 
     return (
         <div className={styles.galleryWrapper}>

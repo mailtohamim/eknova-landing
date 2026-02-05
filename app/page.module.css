@@ -127,10 +127,17 @@
 
 /* Benefit Grid */
 .benefitGrid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg) var(--space-sm);
+    justify-items: center;
+}
+
+@media (min-width: 768px) {
+    .benefitGrid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--space-xl);
+    }
 }
 
 .benefitItem {
@@ -139,8 +146,8 @@
     align-items: center;
     gap: var(--space-sm);
     text-align: center;
-    width: 140px;
-    /* Slightly wider for labels */
+    width: 100%;
+    max-width: 120px;
     transition: transform var(--transition-fast);
 }
 
@@ -149,19 +156,25 @@
 }
 
 .benefitIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     background: white;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    /* Slightly clearer shadow */
     color: var(--color-black);
-    /* Ensure icons are dark/black */
     border: 1px solid var(--border-light);
+}
+
+@media (min-width: 768px) {
+    .benefitIcon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
 }
 
 /* Values Grid (Legacy) */
@@ -242,11 +255,9 @@
 .sectionHeader h2 {
     margin-bottom: var(--space-sm);
     color: var(--color-maroon);
-    /* Maroon accent */
     font-family: var(--font-sans);
-    /* Modern Sans */
     font-weight: 900;
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     text-transform: uppercase;
 }
 
@@ -312,12 +323,12 @@
 .hubTag {
     background: var(--color-maroon);
     color: white;
-    padding: 0.25rem 0.75rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 99px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     font-weight: 600;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
     display: inline-block;
 }
 
@@ -436,13 +447,20 @@
 }
 
 .iconWrapper {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--space-xs);
     color: var(--color-black);
+}
+
+@media (min-width: 768px) {
+    .iconWrapper {
+        width: 64px;
+        height: 64px;
+    }
 }
 
 .iconItem h3 {
@@ -463,13 +481,18 @@
 .heroFull {
     position: relative;
     width: 100%;
-    height: 90vh;
-    /* Takes up most of the viewport */
+    height: 60vh;
+    /* Shorter on mobile */
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Center align */
+}
+
+@media (min-width: 900px) {
+    .heroFull {
+        height: 90vh;
+    }
 }
 
 .heroImageWrapper {
