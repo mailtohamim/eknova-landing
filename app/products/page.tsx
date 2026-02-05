@@ -59,15 +59,16 @@ function ProductList() {
 
     // 1. Category / Therapeutic Class Filter (Case-Insensitive)
     if (category) {
-        const lowerCategory = category.toLowerCase();
+        const lowerCategory = category.toLowerCase().trim();
         filteredProducts = filteredProducts.filter(p => {
-            const needs = Array.isArray(p.needs) ? p.needs : [];
-            const pIngredients = Array.isArray(p.ingredients) ? p.ingredients : [];
-            const pPortfolio = p.portfolio || '';
-            // Check needs, ingredients list, or portfolio (Therapeutic Class)
-            return needs.some(n => n.toLowerCase() === lowerCategory) ||
-                pIngredients.some(i => i.toLowerCase() === lowerCategory) ||
-                pPortfolio.toLowerCase() === lowerCategory;
+            const needs = (Array.isArray(p.needs) ? p.needs : []).map(n => n.toLowerCase().trim());
+            const pIngredients = (Array.isArray(p.ingredients) ? p.ingredients : []).map(i => i.toLowerCase().trim());
+            const pPortfolio = (p.portfolio || '').toLowerCase().trim();
+
+            // Check needs, ingredients list, or portfolio
+            return needs.includes(lowerCategory) ||
+                pIngredients.includes(lowerCategory) ||
+                pPortfolio === lowerCategory;
         });
 
         // Find the "pretty" version of the category name for the title
