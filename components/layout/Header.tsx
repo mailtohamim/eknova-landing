@@ -25,7 +25,6 @@ export default function Header() {
         { href: '/products', label: 'Vitamins & Supplements', hasMegaMenu: true },
         { href: '/about', label: 'Who We Are' },
         { href: '/wellness-hub', label: 'Wellness Hub' },
-        { href: '/ek-admin', label: 'Admin' },
     ];
 
     const handleSearch = (e: React.FormEvent) => {
@@ -44,7 +43,7 @@ export default function Header() {
                     <Link href="/" className={styles.logo}>
                         <div style={{ position: 'relative', width: '160px', height: '40px' }}>
                             <img
-                                src="/SVG/EKNOVA Black Box with Green Accent.svg"
+                                src="/SVG/EKNOVA Black with Red Accent.svg"
                                 alt="Eknova"
                                 style={{ height: '100%', width: 'auto', objectFit: 'contain' }}
                             />

@@ -1,3 +1,108 @@
-.checkoutWrapper {
-    min-height: 60vh;
+.checkoutContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg);
+}
+
+.checkoutGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .checkoutGrid {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+.checkoutFormCard {
+    background: white;
+    padding: var(--space-xl);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-light);
+}
+
+.orderSummaryCard {
+    background: var(--color-pearl);
+    padding: var(--space-xl);
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    position: sticky;
+    top: 100px;
+}
+
+.summaryTitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: var(--space-sm);
+}
+
+.itemList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.item {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.itemImage {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+}
+
+.itemInfo {
+    flex: 1;
+}
+
+.itemName {
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: block;
+}
+
+.itemQty {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.itemPrice {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-md);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.emptyState {
+    text-align: center;
+    padding: var(--space-3xl) 0;
+}
+
+.breadcrumb {
+    margin-bottom: var(--space-xl);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    color: var(--color-maroon);
+    text-decoration: none;
 }

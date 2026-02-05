@@ -3,11 +3,12 @@ import { prisma } from '@/lib/db';
 
 export async function GET(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
         const product = await prisma.product.findUnique({
-            where: { id: params.id },
+            where: { id },
         });
         if (!product) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 });
@@ -20,12 +21,13 @@ export async function GET(
 
 export async function PUT(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
         const data = await request.json();
         const product = await prisma.product.update({
-            where: { id: params.id },
+            where: { id },
             data,
         });
         return NextResponse.json(product);
@@ -36,11 +38,12 @@ export async function PUT(
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
         await prisma.product.delete({
-            where: { id: params.id },
+            where: { id },
         });
         return NextResponse.json({ message: 'Product deleted' });
     } catch (error: any) {

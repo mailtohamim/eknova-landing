@@ -18,9 +18,9 @@ function ProductList() {
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const category = searchParams.get('category');
-    const format = searchParams.get('format');
-    const query = searchParams.get('query');
+    const category = searchParams.get('category')?.trim() || null;
+    const format = searchParams.get('format')?.trim() || null;
+    const query = searchParams.get('query')?.trim() || null;
     const sort = searchParams.get('sort') || 'featured';
 
     useEffect(() => {
@@ -28,7 +28,20 @@ function ProductList() {
         fetch('/api/products')
             .then(res => res.json())
             .then(data => {
-                setAllProducts(data);
+                if (Array.isArray(data)) {
+                    // Sanitize data to ensure arrays exist
+                    const sanitized = data.map((p: any) => ({
+                        ...p,
+                        benefits: Array.isArray(p.benefits) ? p.benefits : [],
+                        ingredients: Array.isArray(p.ingredients) ? p.ingredients : [],
+                        needs: Array.isArray(p.needs) ? p.needs : [],
+                        images: Array.isArray(p.images) ? p.images : [p.image],
+                    }));
+                    setAllProducts(sanitized);
+                } else {
+                    console.error('API did not return an array:', data);
+                    setAllProducts([]);
+                }
                 setIsLoading(false);
             })
             .catch(err => {
@@ -37,27 +50,43 @@ function ProductList() {
             });
     }, []);
 
-    // Start with all products (shallow copy to avoid mutating source)
-    let filteredProducts = [...allProducts];
+    // Start with all products (ensure it's an array)
+    let filteredProducts = Array.isArray(allProducts) ? [...allProducts] : [];
 
     let title = 'All Products';
     let heroImage = CATEGORY_IMAGES['Default'];
     let description = CATEGORY_DESCRIPTIONS['Default'];
 
-    // 1. Category Filter
+    // 1. Category / Therapeutic Class Filter (Case-Insensitive)
     if (category) {
-        filteredProducts = filteredProducts.filter(p => p.needs?.includes(category) || p.ingredients_list?.includes(category));
-        title = category;
-        heroImage = CATEGORY_IMAGES[category] || CATEGORY_IMAGES['Default'];
-        description = CATEGORY_DESCRIPTIONS[category] || CATEGORY_DESCRIPTIONS['Default'];
+        const lowerCategory = category.toLowerCase();
+        filteredProducts = filteredProducts.filter(p => {
+            const needs = Array.isArray(p.needs) ? p.needs : [];
+            const pIngredients = Array.isArray(p.ingredients) ? p.ingredients : [];
+            const pPortfolio = p.portfolio || '';
+            // Check needs, ingredients list, or portfolio (Therapeutic Class)
+            return needs.some(n => n.toLowerCase() === lowerCategory) ||
+                pIngredients.some(i => i.toLowerCase() === lowerCategory) ||
+                pPortfolio.toLowerCase() === lowerCategory;
+        });
+
+        // Find the "pretty" version of the category name for the title
+        const displayCategory = CATEGORIES.find(c => c.toLowerCase() === lowerCategory) || category;
+        title = displayCategory;
+        heroImage = CATEGORY_IMAGES[displayCategory] || CATEGORY_IMAGES['Default'];
+        description = CATEGORY_DESCRIPTIONS[displayCategory] || CATEGORY_DESCRIPTIONS['Default'];
     }
 
-    // 2. Format Filter (Additive)
+    // 2. Format Filter (Additive, Case-Insensitive)
     if (format) {
-        filteredProducts = filteredProducts.filter(p => p.format === format);
+        const lowerFormat = format.toLowerCase();
+        filteredProducts = filteredProducts.filter(p =>
+            p.format?.toLowerCase() === lowerFormat
+        );
         if (title === 'All Products') {
-            title = format;
-            heroImage = CATEGORY_IMAGES[format] || CATEGORY_IMAGES['Default'];
+            const displayFormat = FORMATS.find(f => f.toLowerCase() === lowerFormat) || format;
+            title = displayFormat;
+            heroImage = CATEGORY_IMAGES[displayFormat] || CATEGORY_IMAGES['Default'];
         }
     }
 

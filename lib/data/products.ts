@@ -40,7 +40,7 @@ export const products: Product[] = [
         id: 'h5', slug: 'shilajit-500mg', name: 'Shilajit 500 mg',
         tagline: 'Himalayan Strength', description: 'Sourced from the Himalayas. Improves athletic performance, male fertility, muscle strength, and supports cognitive health.',
         price: 1800, rating: 4.9, reviews: 45, image: getPlaceholderImage(0), format: 'Capsules',
-        needs: ["Men's Health", 'Energy', 'Muscle Supports & Recovery', 'Brain Health'], portfolio: 'Herbal',
+        needs: ["Men's Health", 'Energy', 'Muscle Supports & Recovery', 'Brain Health', 'Adaptogens'], portfolio: 'Herbal',
         ingredients: ['Shilajit 500 mg'], benefits: ['Boosts testosterone', 'Enhances stamina', 'Bone health'], usage: 'Take 1 capsule daily.'
     },
     {
@@ -54,14 +54,14 @@ export const products: Product[] = [
         id: 'h7', slug: 'ashwagandha-250mg', name: 'Ashwagandha 250 mg',
         tagline: 'Stress & Anxiety Relief', description: 'Adaptogenic herb to reduce stress, improve cognitive function, and combat insomnia.',
         price: 900, rating: 4.6, reviews: 50, image: getPlaceholderImage(2), format: 'Capsules',
-        needs: ['Stress & Anxiety', 'Brain Health', 'Sleep'], portfolio: 'Herbal',
+        needs: ['Stress & Anxiety', 'Brain Health', 'Sleep', 'Adaptogens'], portfolio: 'Herbal',
         ingredients: ['Ashwagandha 250 mg'], benefits: ['Calms mind', 'Restful sleep'], usage: 'Take 1-2 daily.'
     },
     {
         id: 'h8', slug: 'curcuminoids-500mg', name: 'Curcuminoids USP 500 mg',
         tagline: 'Active Turmeric Power', description: 'Potent antioxidant and anti-inflammatory support for joint health and immunity.',
         price: 1350, rating: 4.8, reviews: 25, image: getPlaceholderImage(3), format: 'Capsules',
-        needs: ['Bone & Joints', 'Immunomodulator'], portfolio: 'Herbal',
+        needs: ['Bone & Joints', 'Immunomodulator', 'Antioxidants'], portfolio: 'Herbal',
         ingredients: ['Curcuminoids 500 mg'], benefits: ['Joint flexibility', 'Inflammation response'], usage: 'Take 1 capsule daily.'
     },
     {
@@ -96,7 +96,7 @@ export const products: Product[] = [
         id: 'h13', slug: 'spirulina-500mg', name: 'Spirulina 500 mg',
         tagline: 'Green Superfood', description: 'Nutrient-dense superfood for malnutrition prevention and diabetes support.',
         price: 850, rating: 4.7, reviews: 60, image: getPlaceholderImage(0), format: 'Capsules',
-        needs: ['Vitamins & Minerals', 'Energy', 'Clinical Nutritional Supplement'], portfolio: 'Herbal',
+        needs: ['Vitamins & Minerals', 'Energy', 'Clinical Nutritional Supplement', 'Antioxidants', 'Superfoods'], portfolio: 'Herbal',
         ingredients: ['Spirulina 500 mg'], benefits: ['Complete protein', 'Blood sugar support'], usage: 'Take 2-4 capsules daily.'
     },
     {
@@ -131,14 +131,14 @@ export const products: Product[] = [
         id: 'h18', slug: 'moringa-powder', name: 'Moringa Superfood Powder',
         tagline: 'Miracle Leaf', description: 'Packed with antioxidants to reduce inflammation, pain, and boost energy.',
         price: 900, rating: 4.7, reviews: 30, image: getPlaceholderImage(1), format: 'Powder',
-        needs: ['Vitamins & Minerals', 'Pain Reliever', 'Energy'], portfolio: 'Herbal',
+        needs: ['Vitamins & Minerals', 'Pain Reliever', 'Energy', 'Antioxidants', 'Superfoods'], portfolio: 'Herbal',
         ingredients: ['Moringa Powder'], benefits: ['Nutrient rich', 'Anti-inflammatory'], usage: 'Add to smoothies or water.'
     },
     {
         id: 'h19', slug: 'ginkgo-biloba', name: 'Ginkgo Biloba 120 mg',
         tagline: 'Cognitive Clarity', description: 'Enhances memory, supports vertigo and tinnitus relief.',
         price: 1300, rating: 4.6, reviews: 25, image: getPlaceholderImage(2), format: 'Capsules',
-        needs: ['Brain Health', 'Nootropics'], portfolio: 'Herbal',
+        needs: ['Brain Health', 'Nootropics', 'Antioxidants'], portfolio: 'Herbal',
         ingredients: ['Ginkgo Biloba 120 mg'], benefits: ['Memory focus', 'Circulation'], usage: 'Take 1 capsule daily.'
     },
     {
@@ -152,7 +152,7 @@ export const products: Product[] = [
         id: 'h21', slug: 'cranberry-uti', name: 'Cranberry Extract 400 mg',
         tagline: 'Urinary Defense', description: 'Supports urinary tract health and prevents UTIs.',
         price: 1400, rating: 4.9, reviews: 60, image: getPlaceholderImage(0), format: 'Capsules',
-        needs: ['Uroprotective', "Women's Health"], portfolio: 'Herbal',
+        needs: ['Uroprotective', "Women's Health", 'Antioxidants'], portfolio: 'Herbal',
         ingredients: ['Cranberry Extract 400 mg'], benefits: ['UTI prevention', 'Antioxidant'], usage: 'Take 1 capsule daily.'
     },
     {
@@ -245,7 +245,7 @@ export const products: Product[] = [
         id: 'n12', slug: 'liposomal-c', name: 'Liposomal Vitamin C',
         tagline: 'Bioactive C', description: 'Non-acidic 1000mg Vitamin C for enhanced collagen synthesis and absorption.',
         price: 1700, rating: 4.7, reviews: 20, image: getPlaceholderImage(1), format: 'Sachets',
-        needs: ['Immunomodulator', 'Beauty Supplement'], portfolio: 'Nutraceuticals',
+        needs: ['Immunomodulator', 'Beauty Supplement', 'Antioxidants'], portfolio: 'Nutraceuticals',
         ingredients: ['Liposomal Vitamin C 1000 mg'], benefits: ['Collagen boost', 'Gentle on stomach'], usage: 'Mix 1 sachet daily.'
     },
     {
@@ -307,6 +307,7 @@ export const products: Product[] = [
 ];
 
 export const CATEGORIES = [
+    "Adaptogens", "Antioxidants", "Superfoods",
     "Beauty Supplement", "Bioavailability Inducer", "Bone & Joints", "Brain Health",
     "Cardiovascular Well-being", "Clinical Nutritional Supplement", "Detox", "Energy",
     "Gut", "Immunomodulator", "Kids Health", "Men's Health",

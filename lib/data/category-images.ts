@@ -1,5 +1,8 @@
 export const CATEGORY_IMAGES: Record<string, string> = {
     // Needs / Therapeutic Classes
+    "Adaptogens": "/images/Wellness.jpg",
+    "Antioxidants": "/images/Wellness.jpg",
+    "Superfoods": "/images/Nutrition Supplement.jpg",
     "Bioavailability Inducer": "/images/Nutrition Supplement.jpg",
     "Bone & Joints": "/images/Bone and Joint.jpg",
     "Brain Health": "/images/Brain Health.jpg",
@@ -48,5 +51,8 @@ export const CATEGORY_DESCRIPTIONS: Record<string, string> = {
     "Gut": "Your health starts here. Support your microbiome with advanced probiotics.",
     "Energy": "Sustainable energy without the crash. Power through your day naturally.",
     "Beauty Supplement": "Radiance from within. Formulated for hair, skin, and nails.",
-    "Default": "Premium herbal and nutraceutical solutions engineered for your well-being."
+    "Default": "Premium herbal and nutraceutical solutions engineered for your well-being.",
+    "Adaptogens": "Nature's way of helping your body manage stress and maintain balance.",
+    "Antioxidants": "Protect your cells and boost your immunity with our powerful antioxidant formulas.",
+    "Superfoods": "Nutrient-dense solutions to fuel your body and mind naturally."
 };

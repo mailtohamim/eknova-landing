@@ -102,8 +102,8 @@
 .backTitle {
     font-family: var(--font-sans);
     font-size: 1rem;
-    color: white;
-    /* White text */
+    color: #ffffff;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
@@ -120,11 +120,11 @@
 }
 
 .benefitList li {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.9);
-    /* Off-white text */
-    margin-bottom: 4px;
-    line-height: 1.3;
+    font-size: 0.85rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.4;
 }
 
 .ingredientsPreview {

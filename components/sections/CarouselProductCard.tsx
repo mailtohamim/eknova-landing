@@ -41,12 +41,12 @@ export default function CarouselProductCard({ product }: CarouselProductCardProp
                     <div className={styles.back}>
                         <h4 className={styles.backTitle}>Highlights</h4>
                         <ul className={styles.benefitList}>
-                            {product.benefits.slice(0, 3).map((benefit, i) => (
+                            {(Array.isArray(product.benefits) ? product.benefits : []).slice(0, 3).map((benefit, i) => (
                                 <li key={i}>{benefit}</li>
                             ))}
                         </ul>
                         <div className={styles.ingredientsPreview}>
-                            <small>{product.ingredients.slice(0, 2).join(', ')}</small>
+                            <small>{(Array.isArray(product.ingredients) ? product.ingredients : []).slice(0, 2).join(', ')}</small>
                         </div>
                     </div>
                 </div>
