@@ -1,4 +1,4 @@
-import { Product } from '@/types/product';
+import { Product } from '../../types/product';
 
 // Helper to assign random images from our limited set
 const getPlaceholderImage = (index: number) => {

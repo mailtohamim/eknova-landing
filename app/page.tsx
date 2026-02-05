@@ -3,11 +3,25 @@ import Button from '@/components/ui/Button';
 import ProductCard from '@/components/sections/ProductCard';
 import ProductCarousel from '@/components/sections/ProductCarousel';
 import CollectionCarousel from '@/components/sections/CollectionCarousel';
-import { products } from '@/lib/data/products';
+import { prisma } from '@/lib/db';
 import styles from './page.module.css';
+import { Product, ProductFormat } from '@/types/product';
 
-export default function HomePage() {
-  const featuredProducts = products.slice(0, 12);
+export default async function HomePage() {
+  const dbProducts = await prisma.product.findMany({
+    take: 12,
+    orderBy: { createdAt: 'desc' },
+  });
+
+  const featuredProducts: Product[] = dbProducts.map(p => ({
+    ...p,
+    format: p.format as ProductFormat,
+    benefits: (p.benefits as string[]) || [],
+    ingredients: (p.ingredients as string[]) || [],
+    needs: (p.needs as string[]) || [],
+    images: (p.images as string[]) || [p.image],
+    portfolio: p.portfolio as any,
+  }));
 
   return (
     <>

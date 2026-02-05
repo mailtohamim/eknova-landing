@@ -1,19 +1,33 @@
 import { notFound } from 'next/navigation';
-import { products } from '@/lib/data/products';
+import { prisma } from '@/lib/db';
 import { formatCurrency } from '@/lib/utils/currency';
 import { AccordionGroup, AccordionItem } from '@/components/ui/Accordion';
 import ProductGallery from '@/components/products/ProductGallery';
 import ProductInfo from '@/components/products/ProductInfo';
 import NutritionTable from '@/components/products/NutritionTable';
 import styles from './page.module.css';
+import { Product, ProductFormat } from '@/types/product';
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const product = products.find((p) => p.slug === slug);
+    const productData = await prisma.product.findUnique({
+        where: { slug },
+    });
 
-    if (!product) {
+    if (!productData) {
         notFound();
     }
+
+    // Cast JSON fields to expected types
+    const product: Product = {
+        ...productData,
+        format: productData.format as ProductFormat,
+        benefits: (productData.benefits as string[]) || [],
+        ingredients: (productData.ingredients as string[]) || [],
+        images: (productData.images as string[]) || [productData.image],
+        needs: (productData.needs as string[]) || [],
+        portfolio: productData.portfolio as any,
+    };
 
     return (
         <div className="container section-padding">

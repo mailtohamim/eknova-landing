@@ -1,26 +1,44 @@
 'use client';
 
-import { Suspense } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { products, FORMATS, CATEGORIES } from '@/lib/data/products';
+import { FORMATS, CATEGORIES } from '@/lib/data/products';
 import { CATEGORY_IMAGES, CATEGORY_DESCRIPTIONS } from '@/lib/data/category-images';
 import CategoryHero from '@/components/products/CategoryHero';
 import ProductCard from '@/components/sections/ProductCard';
 import FilterBar from '@/components/products/FilterBar';
 import styles from './page.module.css';
+import { Product } from '@/types/product';
 
 // Component to handle search params logic
 function ProductList() {
     const searchParams = useSearchParams();
-    const router = useRouter(); // Import useRouter at top
+    const router = useRouter();
+
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const category = searchParams.get('category');
     const format = searchParams.get('format');
     const query = searchParams.get('query');
     const sort = searchParams.get('sort') || 'featured';
 
+    useEffect(() => {
+        setIsLoading(true);
+        fetch('/api/products')
+            .then(res => res.json())
+            .then(data => {
+                setAllProducts(data);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.error('Error fetching products:', err);
+                setIsLoading(false);
+            });
+    }, []);
+
     // Start with all products (shallow copy to avoid mutating source)
-    let filteredProducts = [...products];
+    let filteredProducts = [...allProducts];
 
     let title = 'All Products';
     let heroImage = CATEGORY_IMAGES['Default'];
@@ -28,7 +46,7 @@ function ProductList() {
 
     // 1. Category Filter
     if (category) {
-        filteredProducts = filteredProducts.filter(p => p.needs.includes(category) || p.ingredients_list?.includes(category));
+        filteredProducts = filteredProducts.filter(p => p.needs?.includes(category) || p.ingredients_list?.includes(category));
         title = category;
         heroImage = CATEGORY_IMAGES[category] || CATEGORY_IMAGES['Default'];
         description = CATEGORY_DESCRIPTIONS[category] || CATEGORY_DESCRIPTIONS['Default'];
@@ -55,7 +73,6 @@ function ProductList() {
     } else if (sort === 'price-desc') {
         filteredProducts.sort((a, b) => b.price - a.price);
     } else if (sort === 'best-sellers') {
-        // Prioritize best sellers, keep others
         filteredProducts.sort((a, b) => (b.isBestSeller ? 1 : 0) - (a.isBestSeller ? 1 : 0));
     } else if (sort === 'newest') {
         filteredProducts.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
@@ -100,40 +117,48 @@ function ProductList() {
             )}
 
             <div className="container section-padding">
-                {!category && !format && !query && (
-                    <div className={styles.header}>
-                        <h1 className="serif">{title}</h1>
-                    </div>
-                )}
-
-                <FilterBar
-                    categories={CATEGORIES}
-                    selectedCategory={category}
-                    formats={FORMATS}
-                    selectedFormat={format}
-                    sortOption={sort}
-                    resultCount={filteredProducts.length}
-                    onCategorySelect={handleCategorySelect}
-                    onFormatSelect={handleFormatSelect}
-                    onSortChange={handleSortChange}
-                />
-
-                {filteredProducts.length > 0 ? (
-                    <div className={styles.grid}>
-                        {filteredProducts.map(product => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
+                {isLoading ? (
+                    <div className={styles.loading}>
+                        <h2 className="serif">Updating wellness essentials...</h2>
                     </div>
                 ) : (
-                    <div className={styles.empty}>
-                        <p>No products found matching your criteria.</p>
-                        <button
-                            onClick={() => router.push('/products')}
-                            style={{ textDecoration: 'underline', marginTop: '1rem', background: 'none', border: 'none', cursor: 'pointer' }}
-                        >
-                            Clear all filters
-                        </button>
-                    </div>
+                    <>
+                        {!category && !format && !query && (
+                            <div className={styles.header}>
+                                <h1 className="serif">{title}</h1>
+                            </div>
+                        )}
+
+                        <FilterBar
+                            categories={CATEGORIES}
+                            selectedCategory={category}
+                            formats={FORMATS}
+                            selectedFormat={format}
+                            sortOption={sort}
+                            resultCount={filteredProducts.length}
+                            onCategorySelect={handleCategorySelect}
+                            onFormatSelect={handleFormatSelect}
+                            onSortChange={handleSortChange}
+                        />
+
+                        {filteredProducts.length > 0 ? (
+                            <div className={styles.grid}>
+                                {filteredProducts.map(product => (
+                                    <ProductCard key={product.id} product={product} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className={styles.empty}>
+                                <p>No products found matching your criteria.</p>
+                                <button
+                                    onClick={() => router.push('/products')}
+                                    style={{ textDecoration: 'underline', marginTop: '1rem', background: 'none', border: 'none', cursor: 'pointer' }}
+                                >
+                                    Clear all filters
+                                </button>
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </>
@@ -148,4 +173,3 @@ export default function ProductsPage() {
         </Suspense>
     );
 }
-
