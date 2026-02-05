@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CATEGORIES, FORMATS } from '@/lib/data/products';
+import { CATEGORIES, FORMATS } from '@/lib/data/products-new';
 import Button from '@/components/ui/Button';
 import { Trash2, Plus, ArrowLeft, Save } from 'lucide-react';
 import toast from 'react-hot-toast';

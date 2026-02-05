@@ -2,7 +2,7 @@
 
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { FORMATS, CATEGORIES } from '@/lib/data/products';
+import { FORMATS, CATEGORIES } from '@/lib/data/products-new';
 import { CATEGORY_IMAGES, CATEGORY_DESCRIPTIONS } from '@/lib/data/category-images';
 import CategoryHero from '@/components/products/CategoryHero';
 import ProductCard from '@/components/sections/ProductCard';

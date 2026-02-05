@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { CATEGORIES, FORMATS } from '@/lib/data/products';
+import { CATEGORIES, FORMATS } from '@/lib/data/products-new';
 import styles from './MegaMenu.module.css';
 
 interface MegaMenuProps {

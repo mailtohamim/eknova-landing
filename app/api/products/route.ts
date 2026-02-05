@@ -15,7 +15,7 @@ export async function GET() {
 
         if (products.length === 0 || !hasNewCategories) {
             console.log('Seeding/Refreshing products in DB...');
-            const { products: staticProducts } = await import('@/lib/data/products');
+            const { products: staticProducts } = await import('@/lib/data/products-new');
             for (const p of staticProducts) {
                 await prisma.product.upsert({
                     where: { slug: p.slug },
