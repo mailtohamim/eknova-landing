@@ -6,6 +6,11 @@ const prisma = new PrismaClient();
 async function main() {
     console.log('Start seeding...');
 
+    // Clear existing products
+    console.log('Clearing existing products...');
+    await prisma.product.deleteMany({});
+
+
     for (const p of products) {
         await prisma.product.upsert({
             where: { slug: p.slug },
