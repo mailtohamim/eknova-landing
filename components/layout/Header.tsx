@@ -41,9 +41,9 @@ export default function Header() {
                 <div className={styles.headerContent}>
                     {/* Logo - Fixed Size */}
                     <Link href="/" className={styles.logo}>
-                        <div style={{ position: 'relative', width: '120px', height: '40px' }}>
+                        <div style={{ position: 'relative', width: '160px', height: '40px' }}>
                             <img
-                                src="/Eknova Boxed Logo.svg"
+                                src="/SVG/EKNOVA Black Box with Green Accent.svg"
                                 alt="Eknova"
                                 style={{ height: '100%', width: 'auto', objectFit: 'contain' }}
                             />
