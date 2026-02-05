@@ -25,6 +25,7 @@ export default function Header() {
         { href: '/products', label: 'Vitamins & Supplements', hasMegaMenu: true },
         { href: '/about', label: 'Who We Are' },
         { href: '/wellness-hub', label: 'Wellness Hub' },
+        { href: '/ek-admin', label: 'Admin' },
     ];
 
     const handleSearch = (e: React.FormEvent) => {
