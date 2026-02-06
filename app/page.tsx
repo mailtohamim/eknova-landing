@@ -103,7 +103,7 @@ export default async function HomePage() {
             <p>Find solutions tailored to your needs</p>
           </div>
           <div className={styles.benefitGrid}>
-            <Link href="/products?category=Stress & anxiety" className={styles.benefitItem}>
+            <Link href="/products?category=Stress %26 anxiety" className={styles.benefitItem}>
               <div className={styles.benefitIcon}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -136,7 +136,7 @@ export default async function HomePage() {
               </div>
               <span>Immunity</span>
             </Link>
-            <Link href="/products?category=Bone & Joints" className={styles.benefitItem}>
+            <Link href="/products?category=Bones %26 Joint" className={styles.benefitItem}>
               <div className={styles.benefitIcon}>
                 <img src="/SVG/Bones and Joints.svg" alt="Bones & Joints" width={32} height={32} />
               </div>
@@ -200,7 +200,7 @@ export default async function HomePage() {
           <div className={styles.instaGrid}>
             <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&auto=format&fit=crop" alt="Community 1" />
             <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=400&auto=format&fit=crop" alt="Community 2" />
-            <img src="https://images.unsplash.com/photo-1544367563-12123d832d73?q=80&w=400&auto=format&fit=crop" alt="Community 3" />
+            <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=400&auto=format&fit=crop" alt="Community 3" />
             <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=400&auto=format&fit=crop" alt="Community 4" />
           </div>
         </div>
