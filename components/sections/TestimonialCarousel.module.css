@@ -1,0 +1,174 @@
+.section {
+    background-color: var(--color-bg-secondary);
+    padding: var(--space-2xl) 0;
+    text-align: center;
+}
+
+.heading {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    margin-bottom: var(--space-2xl);
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.carouselWrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    /* Determine gap based on design; aligning with user screenshot style */
+    gap: var(--space-2xl);
+    align-items: flex-start;
+}
+
+.slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* On desktop, show 3 slides */
+@media (min-width: 1024px) {
+    .slide {
+        flex: 0 0 33.333%;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 var(--space-md);
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: var(--space-lg);
+    color: #D32F2F;
+    /* Deep red for stars */
+}
+
+.quote {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--space-lg);
+    font-style: italic;
+}
+
+.author {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+}
+
+.product {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Controls Section */
+.controlsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-2xl);
+    gap: var(--space-xl);
+}
+
+.progressBar {
+    flex: 1;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background-color: var(--color-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.buttons {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.navBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--color-text);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--color-text);
+}
+
+.navBtn:hover {
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+.navBtn.nextBtn {
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+.navBtn.nextBtn:hover {
+    background: transparent;
+    color: var(--color-text);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 2rem;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+
+    .controlsWrapper {
+        flex-direction: column-reverse;
+        /* Buttons on top or bottom? Design choice. usually bottom. */
+        gap: var(--space-lg);
+    }
+
+    .buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}

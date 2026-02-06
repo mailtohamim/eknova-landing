@@ -4,6 +4,7 @@ import ProductCard from '@/components/sections/ProductCard';
 import ProductCarousel from '@/components/sections/ProductCarousel';
 import CollectionCarousel from '@/components/sections/CollectionCarousel';
 import ArticleCarousel from '@/components/sections/ArticleCarousel';
+import TestimonialCarousel from '@/components/sections/TestimonialCarousel';
 import { prisma } from '@/lib/db';
 import styles from './page.module.css';
 import { Product, ProductFormat } from '@/types/product';
@@ -207,6 +208,9 @@ export default async function HomePage() {
           <ArticleCarousel />
         </div>
       </section>
+
+      {/* Testimonials */}
+      <TestimonialCarousel />
 
       {/* Instagram / Social Proof */}
       <section className="section-padding">
