@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Eknova | Premium Botanical Wellness from Bangladesh',
   description: 'Nature-powered solutions backed by science. Discover premium herbal supplements from Bangladesh.',
   icons: {
-    icon: '/Eknova Favicon.svg',
+    icon: '/SVG/Eknova New Favicon.svg',
   },
 };
 
