@@ -23,9 +23,15 @@ export default function CheckoutPage() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ items }),
             })
-                .then((res) => res.json())
+                .then((res) => {
+                    if (!res.ok) throw new Error('Payment initialization failed');
+                    return res.json();
+                })
                 .then((data) => setClientSecret(data.clientSecret))
-                .catch(err => console.error("Error creating payment intent:", err));
+                .catch(err => {
+                    console.error("Error creating payment intent:", err);
+                    alert("Checkout initialization failed. Please try again.");
+                });
         }
     }, [items]);
 
