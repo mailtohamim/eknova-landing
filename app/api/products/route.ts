@@ -72,8 +72,9 @@ export async function GET() {
 
         return NextResponse.json(parsedProducts);
     } catch (error: any) {
-        console.error('Error fetching products:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        console.error('Error fetching products (DB likely unavailable), serving static fallback:', error);
+        const { products: staticProducts } = await import('@/lib/data/products-new');
+        return NextResponse.json(staticProducts);
     }
 }
 
