@@ -10,26 +10,41 @@ import { Product, ProductFormat } from '@/types/product';
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const productData = await prisma.product.findUnique({
-        where: { slug },
-    });
 
-    if (!productData) {
-        notFound();
+    let productData: any = null;
+    try {
+        productData = await prisma.product.findUnique({
+            where: { slug },
+        });
+    } catch (error) {
+        console.warn(`DB fetch failed for slug ${slug}, using static fallback`, error);
     }
 
-    // Cast JSON fields to expected types
-    const product: Product = {
-        ...productData,
-        format: productData.format as ProductFormat,
-        benefits: (productData.benefits as string[]) || [],
-        ingredients: (productData.ingredients as string[]) || [],
-        images: (Array.isArray(productData.images) && productData.images.length > 0)
-            ? (productData.images as string[])
-            : [productData.image],
-        needs: (productData.needs as string[]) || [],
-        portfolio: productData.portfolio as any,
-    };
+    let product: Product;
+
+    if (productData) {
+        // Cast JSON fields to expected types from DB result
+        product = {
+            ...productData,
+            format: productData.format as ProductFormat,
+            benefits: (productData.benefits as string[]) || [],
+            ingredients: (productData.ingredients as string[]) || [],
+            images: (Array.isArray(productData.images) && productData.images.length > 0)
+                ? (productData.images as string[])
+                : [productData.image],
+            needs: (productData.needs as string[]) || [],
+            portfolio: productData.portfolio as any,
+        };
+    } else {
+        // Fallback to static data (handles DB failure or unseeded DB)
+        const { products } = await import('@/lib/data/products-new');
+        const staticProduct = products.find((p) => p.slug === slug);
+
+        if (!staticProduct) {
+            notFound();
+        }
+        product = staticProduct;
+    }
 
     return (
         <div className="container section-padding">
