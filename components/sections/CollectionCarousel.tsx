@@ -67,9 +67,7 @@ export default function CollectionCarousel() {
                 {/* Left Side: Text */}
                 <div className={styles.textSide}>
                     <h2 className={styles.mainHeading}>
-                        FUNCTIONAL FUN. <br />
-                        MELT ON THE TONGUE. <br />
-                        WE'VE GOT IT ALL.
+                        From Morning Fog to Midnight Fuel
                     </h2>
                 </div>
 
