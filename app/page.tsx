@@ -58,42 +58,28 @@ export default async function HomePage() {
           <div className={styles.valuesGrid}>
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2.69l5.74 5.74-2.12 2.12-3.62-3.62-3.62 3.62-2.12-2.12 5.74-5.74zM12 22c5.52 0 10-4.48 10-10s-4.48-10-10-10-10 4.48-10 10 4.48 10 10 10z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
+                <img src="/SVG/Organic Sourcing.svg" alt="Organic Sourcing" width={32} height={32} />
               </div>
               <h3>Organic Sourcing</h3>
               <p>Pure plant extracts from sustainable farms</p>
             </div>
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                  <line x1="9" y1="9" x2="9.01" y2="9" />
-                  <line x1="15" y1="9" x2="15.01" y2="9" />
-                </svg>
+                <img src="/SVG/Holistic Wellness.svg" alt="Holistic Wellness" width={32} height={32} />
               </div>
               <h3>Holistic Wellness</h3>
               <p>Mind-body balance through nature</p>
             </div>
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
+                <img src="/SVG/Standardized.svg" alt="Standardized" width={32} height={32} />
               </div>
               <h3>Standardized</h3>
               <p>Consistent potency in every capsule</p>
             </div>
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
+                <img src="/SVG/Sustainable.svg" alt="Sustainable" width={32} height={32} />
               </div>
               <h3>Sustainable</h3>
               <p>Earth-friendly practices throughout</p>
@@ -146,21 +132,13 @@ export default async function HomePage() {
             </Link>
             <Link href="/products?category=Immunomodulator" className={styles.benefitItem}>
               <div className={styles.benefitIcon}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <img src="/SVG/Immunity.svg" alt="Immunity" width={32} height={32} />
               </div>
               <span>Immunity</span>
             </Link>
             <Link href="/products?category=Bone & Joints" className={styles.benefitItem}>
               <div className={styles.benefitIcon}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17 19.5c.3.5.7.8 1.1 1 .5.3 2.1.2 3.4-.6 1.3-.8 1.8-2.3 1.2-2.9-.5-.6-1.9-1.3-4.1-.1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M7 4.5c-.3-.5-.7-.8-1.1-1-.5-.3-2.1-.2-3.4.6C1.2 4.9.7 6.4 1.3 7c.5.6 1.9 1.3 4.1.1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M17.4 5.3 6.6 18.7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M18 9c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .8.3 1.6.9 2.1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M6 15c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3c0-.8-.3-1.6-.9-2.1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <img src="/SVG/Bones and Joints.svg" alt="Bones & Joints" width={32} height={32} />
               </div>
               <span>Bones & Joints</span>
             </Link>
@@ -244,9 +222,7 @@ export default async function HomePage() {
             {/* Icon 1 */}
             <div className={styles.iconItem}>
               <div className={styles.iconWrapper}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
+                <img src="/SVG/Trusted Quality.svg" alt="Trusted Quality" width={48} height={48} />
               </div>
               <h3>Trusted Quality</h3>
               <p>GMP Certified & Lab Tested</p>
@@ -255,11 +231,7 @@ export default async function HomePage() {
             {/* Icon 2 */}
             <div className={styles.iconItem}>
               <div className={styles.iconWrapper}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2.69l5.74 5.74-2.12 2.12-3.62-3.62-3.62 3.62-2.12-2.12 5.74-5.74zM12 22c5.52 0 10-4.48 10-10s-4.48-10-10-10-10 4.48-10 10 4.48 10 10 10z" /> {/* Leaf-ish abstract */}
-                  <path d="M12 8v8" />
-                  <path d="M8 12h8" />
-                </svg>
+                <img src="/SVG/Globally Sourced.svg" alt="Globally Sourced" width={48} height={48} />
               </div>
               <h3>Globally Sourced</h3>
               <p>Premium Ingredients from Around the World</p>
@@ -268,10 +240,7 @@ export default async function HomePage() {
             {/* Icon 3 */}
             <div className={styles.iconItem}>
               <div className={styles.iconWrapper}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="8" r="7" />
-                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                </svg>
+                <img src="/SVG/Award Winning.svg" alt="Award Winning" width={48} height={48} />
               </div>
               <h3>Award Winning</h3>
               <p>Recognized for Excellence</p>
@@ -280,10 +249,7 @@ export default async function HomePage() {
             {/* Icon 4 */}
             <div className={styles.iconItem}>
               <div className={styles.iconWrapper}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
+                <img src="/SVG/Science Backed.svg" alt="Science Backed" width={48} height={48} />
               </div>
               <h3>Science Backed</h3>
               <p>Formulated by Experts</p>
