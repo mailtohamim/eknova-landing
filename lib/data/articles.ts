@@ -18,7 +18,7 @@ export const articles: Article[] = [
         tag: 'Lifestyle',
         title: '5 Morning Habits for All-Day Energy',
         excerpt: 'Start your day right with these simple, science-backed routines to boost your vitality.',
-        image: 'https://images.unsplash.com/photo-1544367563-12123d832d73?q=80&w=800&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop',
         author: 'Dr. Sarah Mitchell',
         date: 'Oct 12, 2025',
         readTime: '4 min read',

@@ -200,7 +200,7 @@ export default async function HomePage() {
           <div className={styles.instaGrid}>
             <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&auto=format&fit=crop" alt="Community 1" />
             <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=400&auto=format&fit=crop" alt="Community 2" />
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa8795?q=80&w=400&auto=format&fit=crop" alt="Community 3" />
+            <img src="https://images.unsplash.com/photo-1544367563-12123d832d73?q=80&w=400&auto=format&fit=crop" alt="Community 3" />
             <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=400&auto=format&fit=crop" alt="Community 4" />
           </div>
         </div>

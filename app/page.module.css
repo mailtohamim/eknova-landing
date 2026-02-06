@@ -254,7 +254,7 @@
 
 .sectionHeader h2 {
     margin-bottom: var(--space-sm);
-    color: var(--color-maroon);
+    color: #333333;
     font-family: var(--font-sans);
     font-weight: 900;
     font-size: clamp(1.75rem, 5vw, 2.5rem);
