@@ -3,6 +3,7 @@ import Button from '@/components/ui/Button';
 import ProductCard from '@/components/sections/ProductCard';
 import ProductCarousel from '@/components/sections/ProductCarousel';
 import CollectionCarousel from '@/components/sections/CollectionCarousel';
+import ArticleCarousel from '@/components/sections/ArticleCarousel';
 import { prisma } from '@/lib/db';
 import styles from './page.module.css';
 import { Product, ProductFormat } from '@/types/product';
@@ -198,30 +199,12 @@ export default async function HomePage() {
       {/* Wellness Hub */}
       <section className="section-padding" style={{ background: 'var(--color-beige)' }}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className="">Wellness Hub</h2>
-            <p>Expert advice and inspiration for your health journey</p>
+          <div className={styles.sectionHeader} style={{ display: 'none' }}>
+            {/* Header effectively replaced by Carousel's internal header, hiding to avoid duplication if needed, 
+                or simplistic replacement: The Carousel contains its own header now. */}
           </div>
-          <div className={styles.hubGrid}>
-            <div className={styles.hubCard}>
-              <img src="https://images.unsplash.com/photo-1544367563-12123d832d73?q=80&w=800&auto=format&fit=crop" alt="Yoga" />
-              <div className={styles.hubContent}>
-                <span className={styles.hubTag}>Lifestyle</span>
-                <h3>5 Morning Habits for All-Day Energy</h3>
-                <p>Start your day right with these simple, science-backed routines.</p>
-                <Button variant="ghost">Read More</Button>
-              </div>
-            </div>
-            <div className={styles.hubCard}>
-              <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=800&auto=format&fit=crop" alt="Food" />
-              <div className={styles.hubContent}>
-                <span className={styles.hubTag}>Nutrition</span>
-                <h3>The Truth About Superfoods</h3>
-                <p>Decoding the myths and facts behind popular nutritional powerhouses.</p>
-                <Button variant="ghost">Read More</Button>
-              </div>
-            </div>
-          </div>
+          {/* Replaced static grid with Carousel */}
+          <ArticleCarousel />
         </div>
       </section>
 
